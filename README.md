@@ -1,3 +1,11 @@
+# Speech To Text MERN Application
+
+## Project Overview
+
+This project is a full-stack MERN Speech-to-Text application that allows users to upload or record audio and convert speech into text using AI-powered transcription APIs.
+
+---
+
 # MERN Stack Overview
 
 ## MongoDB
@@ -43,3 +51,27 @@ Frontend Displays Result
 # Speech-to-Text Provider Used
 
 This project uses the OpenAI Whisper API for accurate speech recognition and transcription generation.
+
+---
+
+# Tech Stack
+
+* React.js
+* Node.js
+* Express.js
+* MongoDB
+* Tailwind CSS
+* OpenAI Whisper API
+
+---
+
+# Current Status
+
+## Day 1 Completed
+
+* Project setup completed
+* Frontend initialized using Vite
+* Backend initialized using Express.js
+* Tailwind CSS configured
+* GitHub repository setup completed
+* README documentation added
