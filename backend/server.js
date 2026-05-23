@@ -2,11 +2,17 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 
+// Routes
+const uploadRoutes = require("./src/routes/uploadRoutes");
+
 const app = express();
 
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// Upload Routes
+app.use("/api/audio", uploadRoutes);
 
 // Test Route
 app.get("/", (req, res) => {

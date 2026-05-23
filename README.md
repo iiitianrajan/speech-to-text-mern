@@ -75,3 +75,14 @@ This project uses the OpenAI Whisper API for accurate speech recognition and tra
 * Tailwind CSS configured
 * GitHub repository setup completed
 * README documentation added
+
+
+## Day 2 Completed
+
+* Configured Express.js backend server
+* Installed and configured multer middleware
+* Created audio upload API endpoint
+* Implemented audio file validation
+* Successfully tested file upload using Hoppscotch
+* Stored uploaded files locally in uploads directory
+
