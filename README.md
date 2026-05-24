@@ -86,3 +86,12 @@ This project uses the OpenAI Whisper API for accurate speech recognition and tra
 * Successfully tested file upload using Hoppscotch
 * Stored uploaded files locally in uploads directory
 
+## Day 3 Completed
+
+* Configured MongoDB Atlas cloud database
+* Connected backend with MongoDB using Mongoose
+* Created transcription schema model
+* Added environment variables for secure database connection
+* Successfully tested database insertion and retrieval
+
+
