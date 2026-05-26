@@ -102,5 +102,14 @@ This project uses the OpenAI Whisper API for accurate speech recognition and tra
 * Connected uploaded audio files to Whisper API
 * Successfully generated transcription text from audio
 
+## Day 5 Completed
+
+* Created frontend audio upload UI
+* Implemented audio recording functionality using MediaRecorder API
+* Added transcription result section
+* Styled frontend components using Tailwind CSS
+* Structured frontend using reusable React components
+
+
 
 
