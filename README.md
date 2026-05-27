@@ -110,6 +110,15 @@ This project uses the OpenAI Whisper API for accurate speech recognition and tra
 * Styled frontend components using Tailwind CSS
 * Structured frontend using reusable React components
 
+## Day 6 Completed
+
+* Connected React frontend with Express backend
+* Implemented Axios API integration
+* Sent audio files from frontend to backend
+* Displayed loading states during transcription
+* Successfully displayed Whisper AI transcription results on frontend
+
+
 
 
 

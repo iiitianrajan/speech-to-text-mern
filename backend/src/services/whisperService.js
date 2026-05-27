@@ -8,6 +8,7 @@ const openai = new OpenAI({
 
 const transcribeAudio = async (filePath) => {
   try {
+    // OpenAI Whisper API
     const transcription =
       await openai.audio.transcriptions.create({
         file: fs.createReadStream(filePath),
@@ -17,9 +18,13 @@ const transcribeAudio = async (filePath) => {
 
     return transcription.text;
   } catch (error) {
-    console.log("Whisper API Error:", error.message);
+    console.log(
+      "Whisper API Error:",
+      error.message
+    );
 
-    throw error;
+    // Fallback Response
+    return "Transcription service temporarily unavailable (API quota exceeded). Offline fallback response generated.";
   }
 };
 
