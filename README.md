@@ -47,11 +47,9 @@ Frontend Displays Result
 ```
 
 ---
-
 # Speech-to-Text Provider Used
 
-This project uses the OpenAI Whisper API for accurate speech recognition and transcription generation.
-
+This project uses the Deepgram Speech-to-Text API for accurate AI-powered audio transcription generation.
 ---
 
 # Tech Stack
@@ -61,7 +59,7 @@ This project uses the OpenAI Whisper API for accurate speech recognition and tra
 * Express.js
 * MongoDB
 * Tailwind CSS
-* OpenAI Whisper API
+* Deepgram Speech-to-Text API
 
 ---
 
@@ -96,10 +94,10 @@ This project uses the OpenAI Whisper API for accurate speech recognition and tra
 
 ## Day 4 Completed
 
-* Integrated OpenAI Whisper API
+* Integrated Deepgram Speech-to-Text API
 * Created speech-to-text service layer
 * Implemented AI audio transcription
-* Connected uploaded audio files to Whisper API
+* Connected uploaded audio files to Deepgram API
 * Successfully generated transcription text from audio
 
 ## Day 5 Completed
@@ -116,7 +114,7 @@ This project uses the OpenAI Whisper API for accurate speech recognition and tra
 * Implemented Axios API integration
 * Sent audio files from frontend to backend
 * Displayed loading states during transcription
-* Successfully displayed Whisper AI transcription results on frontend
+* Successfully displayed Deepgram AI transcription results on frontend
 
 
 
