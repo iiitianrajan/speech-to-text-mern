@@ -31,8 +31,8 @@ const AudioUpload = ({ setTranscription }) => {
       );
 
       setTranscription(
-        response.data.transcription
-      );
+  response.data.data.transcriptionText
+);
     } catch (error) {
       console.log(error);
 

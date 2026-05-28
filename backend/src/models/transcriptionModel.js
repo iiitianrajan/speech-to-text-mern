@@ -1,31 +1,27 @@
 const mongoose = require("mongoose");
 
-const transcriptionSchema = new mongoose.Schema(
-  {
-    fileName: {
-      type: String,
-      required: true,
-    },
+const transcriptionSchema =
+  new mongoose.Schema(
+    {
+      fileName: {
+        type: String,
+        required: true,
+      },
 
-    filePath: {
-      type: String,
-      required: true,
-    },
+      filePath: {
+        type: String,
+        required: true,
+      },
 
-    transcriptionText: {
-      type: String,
-      default: "",
+      transcriptionText: {
+        type: String,
+        required: true,
+      },
     },
-
-    uploadedAt: {
-      type: Date,
-      default: Date.now,
-    },
-  },
-  {
-    timestamps: true,
-  }
-);
+    {
+      timestamps: true,
+    }
+  );
 
 module.exports = mongoose.model(
   "Transcription",
