@@ -1,8 +1,10 @@
-const transcribeAudio = require("../services/whisperService");
+const transcribeAudio = require(
+  "../services/deepgramService"
+);
 
 const uploadAudio = async (req, res) => {
   try {
-    // Check uploaded file
+    // Check file
     if (!req.file) {
       return res.status(400).json({
         success: false,
@@ -10,21 +12,21 @@ const uploadAudio = async (req, res) => {
       });
     }
 
-    // Send audio to Whisper API
-    const transcriptionText = await transcribeAudio(
-      req.file.path
-    );
+    // AI transcription
+    const transcriptionText =
+      await transcribeAudio(req.file.path);
 
     // Response
     res.status(200).json({
       success: true,
-      message: "Audio transcribed successfully",
-
-      file: req.file,
+      message:
+        "Audio transcribed successfully",
 
       transcription: transcriptionText,
     });
   } catch (error) {
+    console.log(error);
+
     res.status(500).json({
       success: false,
       message: error.message,
