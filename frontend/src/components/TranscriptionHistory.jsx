@@ -22,27 +22,51 @@ const TranscriptionHistory = () => {
     fetchHistory();
   }, []);
 
-  return (
-    <div className="mt-6">
-      <h2 className="text-2xl font-bold mb-4">
-        Previous Transcriptions
-      </h2>
+ return (
+  <div className="mt-6">
+    <h2 className="text-2xl font-bold text-gray-800 mb-6">
+      Previous Transcriptions
+    </h2>
 
-      <div className="space-y-4">
+    {history.length === 0 ? (
+      <div className="bg-gray-50 border rounded-xl p-6 text-center text-gray-500">
+        No transcription history found.
+      </div>
+    ) : (
+      <div className="grid gap-4">
         {history.map((item) => (
           <div
             key={item._id}
-            className="border p-4 rounded-lg shadow"
+            className="
+              bg-white
+              border
+              rounded-xl
+              p-5
+              shadow-md
+              hover:shadow-xl
+              transition-all
+              duration-300
+            "
           >
-            <h3 className="font-semibold">
-              {item.fileName}
-            </h3>
+            <div className="flex justify-between items-start mb-3">
+              <h3 className="font-semibold text-lg text-blue-600 break-all">
+                {item.fileName}
+              </h3>
 
-            <p className="text-gray-700 mt-2">
-              {item.transcriptionText}
-            </p>
+              <span className="text-xs text-gray-500">
+                {new Date(
+                  item.createdAt
+                ).toLocaleDateString()}
+              </span>
+            </div>
 
-            <p className="text-sm text-gray-500 mt-2">
+            <div className="bg-gray-50 rounded-lg p-3">
+              <p className="text-gray-700 whitespace-pre-wrap">
+                {item.transcriptionText}
+              </p>
+            </div>
+
+            <p className="text-sm text-gray-500 mt-3">
               {new Date(
                 item.createdAt
               ).toLocaleString()}
@@ -50,8 +74,9 @@ const TranscriptionHistory = () => {
           </div>
         ))}
       </div>
-    </div>
-  );
+    )}
+  </div>
+);
 };
 
 export default TranscriptionHistory;

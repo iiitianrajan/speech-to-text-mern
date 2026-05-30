@@ -116,6 +116,29 @@ This project uses the Deepgram Speech-to-Text API for accurate AI-powered audio 
 * Displayed loading states during transcription
 * Successfully displayed Deepgram AI transcription results on frontend
 
+## Day 7 Completed
+
+* Integrated MongoDB storage for transcriptions
+* Saved uploaded audio metadata in the database
+* Stored AI-generated transcription text in MongoDB Atlas
+* Created API endpoint to fetch transcription history
+* Retrieved transcription history from the backend
+* Displayed previous transcriptions on the frontend
+* Implemented persistent storage for transcription records
+* Connected frontend history section with MongoDB data
+
+
+## Day 8 Completed
+
+* Enhanced UI using Tailwind CSS
+* Improved application typography and layout
+* Redesigned upload and recording sections
+* Added hover effects and smooth transitions
+* Improved transcription result display
+* Implemented responsive card-based transcription history
+* Enhanced overall user experience
+
+
 
 
 

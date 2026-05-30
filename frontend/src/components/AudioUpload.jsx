@@ -41,33 +41,58 @@ const AudioUpload = ({ setTranscription }) => {
       setLoading(false);
     }
   };
+return (
+  <div>
+    <h2 className="text-2xl font-bold text-gray-800 mb-4">
+      Upload Audio File
+    </h2>
 
-  return (
-    <div className="p-4 border rounded-lg">
-      <h2 className="text-xl font-bold mb-4">
-        Upload Audio File
-      </h2>
-
-      <input
-        type="file"
-        accept="audio/*"
-        onChange={handleFileChange}
-      />
-
-      {audioFile && (
-        <p className="mt-2 text-green-600">
-          Selected: {audioFile.name}
+    <label className="block w-full cursor-pointer">
+      <div className="border-2 border-dashed border-blue-300 rounded-xl p-6 text-center hover:border-blue-500 transition duration-300">
+        <p className="text-gray-600">
+          Click to select an audio file
         </p>
-      )}
 
-      <button
-        onClick={handleUpload}
-        className="bg-blue-500 text-white px-4 py-2 rounded mt-4"
-      >
-        {loading ? "Processing..." : "Upload"}
-      </button>
-    </div>
-  );
+        <input
+          type="file"
+          accept="audio/*"
+          onChange={handleFileChange}
+          className="hidden"
+        />
+      </div>
+    </label>
+
+    {audioFile && (
+      <div className="mt-4 inline-block bg-green-100 text-green-700 px-3 py-2 rounded-lg text-sm">
+        {audioFile.name}
+      </div>
+    )}
+
+    <button
+      onClick={handleUpload}
+      disabled={loading}
+      className="
+        mt-5
+        w-full
+        bg-blue-600
+        hover:bg-blue-700
+        text-white
+        font-semibold
+        py-3
+        rounded-xl
+        shadow-md
+        hover:shadow-xl
+        transition-all
+        duration-300
+        disabled:bg-gray-400
+      "
+    >
+      {loading
+        ? "Generating Transcription..."
+        : "Upload & Transcribe"}
+    </button>
+  </div>
+);
 };
 
 export default AudioUpload;
