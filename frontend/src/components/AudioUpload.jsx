@@ -8,17 +8,54 @@ const AudioUpload = ({ setTranscription }) => {
 
   const [loading, setLoading] =
     useState(false);
+    const [error, setError] =
+  useState("");
 
   const handleFileChange = (e) => {
-    setAudioFile(e.target.files[0]);
-  };
+  const file = e.target.files[0];
 
+  setError("");
+
+  if (!file) return;
+
+  const allowedTypes = [
+    "audio/mpeg",
+    "audio/wav",
+    "audio/webm",
+  ];
+
+  if (
+    !allowedTypes.includes(
+      file.mimetype
+    )
+  ) {
+    setError(
+      "Please select a valid audio file."
+    );
+
+    return;
+  }
+
+  if (
+    file.size >
+    10 * 1024 * 1024
+  ) {
+    setError(
+      "File size must be less than 10 MB."
+    );
+
+    return;
+  }
+
+  setAudioFile(file);
+};
   const handleUpload = async () => {
     if (!audioFile) {
       return alert("Please select audio file");
     }
 
     try {
+      setError("");
       setLoading(true);
 
       const formData = new FormData();
@@ -36,7 +73,10 @@ const AudioUpload = ({ setTranscription }) => {
     } catch (error) {
       console.log(error);
 
-      alert("Upload Failed");
+      setError(
+  error.response?.data?.message ||
+    "Upload failed"
+);
     } finally {
       setLoading(false);
     }
@@ -46,6 +86,7 @@ return (
     <h2 className="text-2xl font-bold text-gray-800 mb-4">
       Upload Audio File
     </h2>
+    
 
     <label className="block w-full cursor-pointer">
       <div className="border-2 border-dashed border-blue-300 rounded-xl p-6 text-center hover:border-blue-500 transition duration-300">
@@ -89,8 +130,16 @@ return (
     >
       {loading
         ? "Generating Transcription..."
-        : "Upload & Transcribe"}
+        : "Upload & Transcribe"
+        }
+        
     </button>
+    {error && (
+  <p className="mt-3 text-red-500 text-sm">
+    {error}
+  </p>
+)}
+    
   </div>
 );
 };

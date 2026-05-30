@@ -15,20 +15,35 @@ const storage = multer.diskStorage({
 
 // File filter
 const fileFilter = (req, file, cb) => {
-  const allowedTypes = /mp3|wav|mpeg/;
+  const allowedTypes = [
+  "audio/mpeg",
+  "audio/wav",
+  "audio/webm",
+];
 
-  const isValid = allowedTypes.test(file.mimetype);
+const isValid =
+  allowedTypes.includes(
+    file.mimetype
+  );
 
   if (isValid) {
     cb(null, true);
   } else {
-    cb(new Error("Only audio files are allowed"));
+   cb(
+  new Error(
+    "Invalid file type. Please upload MP3, WAV, or WEBM audio files only."
+  )
+);
   }
 };
 
 const upload = multer({
   storage,
-  fileFilter,
-});
 
+  fileFilter,
+
+  limits: {
+    fileSize: 10 * 1024 * 1024,
+  },
+});
 module.exports = upload;

@@ -27,23 +27,53 @@ const transcribeAudio = async (filePath) => {
 
           smart_format: true,
         },
+         timeout: 30000,
       }
     );
 
     // Extract transcription text
     const transcription =
-      response.data.results.channels[0]
-        .alternatives[0].transcript;
+  response.data.results.channels[0]
+    .alternatives[0].transcript;
 
-    return transcription;
+if (
+  !transcription ||
+  transcription.trim() === ""
+) {
+  throw new Error(
+    "No speech detected in audio"
+  );
+}
+
+return transcription;
   } catch (error) {
-    console.log(
-      "Deepgram Error:",
-      error.response?.data || error.message
-    );
+  console.log(
+    "Deepgram Error:",
+    error.response?.data || error.message
+  );
 
-    throw error;
+  if (error.code === "ECONNABORTED") {
+    throw new Error(
+      "Transcription request timed out"
+    );
   }
+
+  if (error.response?.status === 401) {
+    throw new Error(
+      "Invalid Deepgram API key"
+    );
+  }
+
+  if (error.response?.status === 429) {
+    throw new Error(
+      "Deepgram API rate limit exceeded"
+    );
+  }
+
+  throw new Error(
+    "Failed to generate transcription"
+  );
+}
 };
 
 module.exports = transcribeAudio;

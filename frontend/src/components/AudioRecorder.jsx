@@ -10,6 +10,8 @@ const AudioRecorder = ({
 
   const [loading, setLoading] =
     useState(false);
+    const [error, setError] =
+  useState("");
 
   const mediaRecorderRef = useRef(null);
 
@@ -19,6 +21,7 @@ const AudioRecorder = ({
   const startRecording = async () => {
     try {
       // Get microphone access
+      setError("");
       const stream =
         await navigator.mediaDevices.getUserMedia(
           {
@@ -49,9 +52,9 @@ const AudioRecorder = ({
     } catch (error) {
       console.log(error);
 
-      alert(
-        "Microphone access denied"
-      );
+      setError(
+  "Microphone access denied"
+);
     }
   };
 
@@ -108,9 +111,10 @@ const AudioRecorder = ({
         } catch (error) {
           console.log(error);
 
-          alert(
-            "Recording upload failed"
-          );
+          setError(
+  error.response?.data?.message ||
+    "Recording upload failed"
+);  
         } finally {
           setLoading(false);
         }
@@ -185,6 +189,11 @@ const AudioRecorder = ({
         </button>
       )}
     </div>
+    {error && (
+  <p className="mt-3 text-red-500 text-sm">
+    {error}
+  </p>
+)}
   </div>
 );
 };

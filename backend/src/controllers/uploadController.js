@@ -17,8 +17,16 @@ const uploadAudio = async (req, res) => {
     }
 
     // AI transcription
-    const transcriptionText =
-      await transcribeAudio(req.file.path);
+    if (
+  !transcriptionText ||
+  transcriptionText.trim() === ""
+) {
+  return res.status(500).json({
+    success: false,
+    message:
+      "Failed to generate transcription",
+  });
+}
 
     // save transcription in database
     const savedTranscription =
@@ -42,9 +50,11 @@ const uploadAudio = async (req, res) => {
     console.log(error);
 
     res.status(500).json({
-      success: false,
-      message: error.message,
-    });
+  success: false,
+  message:
+    error.message ||
+    "Internal server error",
+});
   }
 };
 
@@ -59,9 +69,12 @@ const getTranscriptions = async (
       });
 
     res.status(200).json({
-      success: true,
-      data: transcriptions,
-    });
+  success: true,
+
+  count: transcriptions.length,
+
+  data: transcriptions,
+});
   } catch (error) {
     console.log(error);
 

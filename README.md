@@ -138,6 +138,19 @@ This project uses the Deepgram Speech-to-Text API for accurate AI-powered audio 
 * Implemented responsive card-based transcription history
 * Enhanced overall user experience
 
+## Day 9 Completed
+
+* Implemented backend file validation using Multer
+* Added audio file type restrictions
+* Added file size validation for uploads
+* Improved transcription service error handling
+* Added timeout handling for Deepgram API requests
+* Added frontend validation for audio uploads
+* Added microphone permission error handling
+* Implemented user-friendly error messages
+* Enhanced application reliability and user experience
+
+
 
 
 
